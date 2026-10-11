@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>明法 · 每日一练｜法考刷题原型 v0.2</title>
+<meta name="description" content="法考 / 法硕 闯关式刷题应用原型：多科目学习地图、即时解析、经验值与连续学习、错题本。" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%2312305f'/><text x='50' y='72' font-size='62' text-anchor='middle' fill='%23f0d9a5' font-family='serif'>法</text></svg>" />
+<link rel="stylesheet" href="assets/app.css" />
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-logo">法</span>
+      <span class="brand-name">明法 · 每日一练</span>
+    </div>
+    <div class="stats">
+      <span class="stat" id="statStreak" title="连续学习天数">🔥 0</span>
+      <span class="stat" id="statXp" title="累计经验值">⚡ 0</span>
+      <button class="icon-btn" id="btnSound" title="音效开关" aria-label="音效开关">🔊</button>
+    </div>
+  </header>
+
+  <main class="screens">
+    <section class="screen" id="screen-courses"></section>
+    <section class="screen" id="screen-map"></section>
+    <section class="screen hidden" id="screen-lesson"></section>
+    <section class="screen hidden" id="screen-result"></section>
+    <section class="screen hidden" id="screen-wrong"></section>
+  </main>
+</div>
+
+<script src="data/course-xingfa.js"></script>
+<script src="data/course-minfa.js"></script>
+<script src="data/course-xingsu.js"></script>
+<script src="data/course-minsu.js"></script>
+<script src="data/course-lilun.js"></script>
+<script src="data/course-xingzheng.js"></script>
+<script src="data/course-shangjingzhi.js"></script>
+<script src="data/course-fashuo.js"></script>
+<script src="data/course-sanguo.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
