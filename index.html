@@ -1,45 +1,196 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>明法 · 每日一练｜法考刷题原型 v0.2</title>
-<meta name="description" content="法考 / 法硕 闯关式刷题应用原型：多科目学习地图、即时解析、经验值与连续学习、错题本。" />
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%2312305f'/><text x='50' y='72' font-size='62' text-anchor='middle' fill='%23f0d9a5' font-family='serif'>法</text></svg>" />
-<link rel="stylesheet" href="assets/app.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>三重频率 TRIPLE FREQUENCY · 个人博客</title>
+  <meta name="description" content="宁艺卓 × 郑雅娴 × 崔志宇 的粉丝个人博客：文章、影像、歌单与追星记录。">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#fdfcf6">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-<div class="app">
-  <header class="topbar">
-    <div class="brand">
-      <span class="brand-logo">法</span>
-      <span class="brand-name">明法 · 每日一练</span>
-    </div>
-    <div class="stats">
-      <span class="stat" id="statStreak" title="连续学习天数">🔥 0</span>
-      <span class="stat" id="statXp" title="累计经验值">⚡ 0</span>
-      <button class="icon-btn" id="btnSound" title="音效开关" aria-label="音效开关">🔊</button>
+  <div id="progress"></div>
+
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a class="logo" href="#top" aria-label="回到首页">
+        <span class="logo-mark"><i></i><i></i><i></i></span>
+        <span class="logo-text"><b>三重频率</b><small>TRIPLE FREQUENCY</small></span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="站内导航">
+        <a href="#hero" class="active">首页</a>
+        <a href="#members">成员</a>
+        <a href="#blog">博客</a>
+        <a href="#gallery">影像</a>
+        <a href="#playlist">歌单</a>
+        <a href="#about">关于</a>
+      </nav>
+      <div class="nav-right">
+        <span class="nav-badge">非官方 · 粉丝站</span>
+        <button class="hamburger" id="hamburger" aria-label="打开菜单" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
     </div>
   </header>
 
-  <main class="screens">
-    <section class="screen" id="screen-courses"></section>
-    <section class="screen" id="screen-map"></section>
-    <section class="screen hidden" id="screen-lesson"></section>
-    <section class="screen hidden" id="screen-result"></section>
-    <section class="screen hidden" id="screen-wrong"></section>
-  </main>
-</div>
+  <main id="top">
+    <section class="hero" id="hero">
+      <img class="hero-bg" src="assets/img/trio-sky.svg" alt="">
+      <div class="hero-shade"></div>
+      <div class="sun" aria-hidden="true"></div>
+      <div class="cloud cloud-1" aria-hidden="true"></div>
+      <div class="cloud cloud-2" aria-hidden="true"></div>
+      <div class="cloud cloud-3" aria-hidden="true"></div>
+      <div class="hero-span" id="heroGlow"></div>
+      <div class="container hero-inner">
+        <p class="hero-kicker reveal">PERSONAL FAN BLOG · EST. 2026</p>
+        <h1 class="hero-title reveal">三重<span class="grad">频率</span></h1>
+        <p class="hero-sub reveal" aria-live="polite"><span id="typed">宁艺卓 × 郑雅娴 × 崔志宇</span><span class="caret" aria-hidden="true"></span></p>
+        <p class="hero-desc reveal">一个关于舞台、声音与心跳的个人博客。<br>以宁艺卓的高音、郑雅娴的锋芒、崔志宇的笑容为坐标，记录我热爱的一切。</p>
+        <div class="hero-cta reveal">
+          <a class="btn btn-primary" href="#blog">进入博客</a>
+          <a class="btn btn-ghost" href="#members">认识她们</a>
+        </div>
+        <div class="hero-chips reveal">
+          <button class="chip" data-member="ningning" style="--accent:#1e93d8;--accent2:#7ee0ff"><span class="chip-dot"></span><b>宁艺卓</b><small>aespa</small></button>
+          <button class="chip" data-member="ahyeon" style="--accent:#ef5f3c;--accent2:#ffc48a"><span class="chip-dot"></span><b>郑雅娴</b><small>BABYMONSTER</small></button>
+          <button class="chip" data-member="jiwoo" style="--accent:#d99b02;--accent2:#ffe27a"><span class="chip-dot"></span><b>崔志宇</b><small>Hearts2Hearts</small></button>
+        </div>
+      </div>
+      <div class="hero-marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>NINGNING · 宁艺卓</span><i>◆</i><span>AHYEON · 郑雅娴</span><i>◆</i><span>JIWOO · 崔志宇</span><i>◆</i>
+          <span>NINGNING · 宁艺卓</span><i>◆</i><span>AHYEON · 郑雅娴</span><i>◆</i><span>JIWOO · 崔志宇</span><i>◆</i>
+        </div>
+      </div>
+      <a class="hero-scroll" href="#members" aria-label="向下滚动"><span></span></a>
+    </section>
 
-<script src="data/course-xingfa.js"></script>
-<script src="data/course-minfa.js"></script>
-<script src="data/course-xingsu.js"></script>
-<script src="data/course-minsu.js"></script>
-<script src="data/course-lilun.js"></script>
-<script src="data/course-xingzheng.js"></script>
-<script src="data/course-shangjingzhi.js"></script>
-<script src="data/course-fashuo.js"></script>
-<script src="data/course-sanguo.js"></script>
-<script src="assets/app.js"></script>
+    <section class="section" id="members">
+      <div class="container">
+        <div class="sec-head reveal">
+          <span class="sec-no">01</span>
+          <div class="sec-titles"><h2>她们是谁</h2><p>MEMBERS · 三种频率，三位发声人</p></div>
+        </div>
+        <div class="members-grid" id="membersGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="blog">
+      <div class="container">
+        <div class="sec-head reveal">
+          <span class="sec-no">02</span>
+          <div class="sec-titles"><h2>写点什么</h2><p>JOURNAL · 乐评、repo 与碎碎念</p></div>
+        </div>
+        <div class="filters reveal" id="filters">
+          <button class="filter active" data-filter="all">全部</button>
+          <button class="filter" data-filter="ningning">宁艺卓</button>
+          <button class="filter" data-filter="ahyeon">郑雅娴</button>
+          <button class="filter" data-filter="jiwoo">崔志宇</button>
+          <button class="filter" data-filter="trio">三人同框</button>
+        </div>
+        <div class="posts-grid" id="postsGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="sec-head reveal">
+          <span class="sec-no">03</span>
+          <div class="sec-titles"><h2>影像墙</h2><p>GALLERY · 三张主题海报与一些句子</p></div>
+        </div>
+        <div class="gallery-grid" id="galleryGrid"></div>
+        <p class="sec-note reveal">※ 海报为本站原创矢量插画，非官方物料，点击可放大查看。</p>
+      </div>
+    </section>
+
+    <section class="section" id="playlist">
+      <div class="container">
+        <div class="sec-head reveal">
+          <span class="sec-no">04</span>
+          <div class="sec-titles"><h2>循环歌单</h2><p>PLAYLIST · 三种心跳的波形图</p></div>
+        </div>
+        <div class="playlist-grid" id="playlistBox"></div>
+        <p class="sec-note reveal">※ 歌单为站长手动整理；播放按钮是装饰性动画，可在 js/data.js 里替换成你的真实链接。</p>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="sec-head reveal">
+          <span class="sec-no">05</span>
+          <div class="sec-titles"><h2>关于本站</h2><p>ABOUT · 一个普通的舞台爱好者</p></div>
+        </div>
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <h3>为什么是她们三个？</h3>
+            <p>最开始我以为答案是「博爱」，后来发现不对。宁艺卓的高音是把天花板掀开的出口，郑雅娴的眼神是踩进地面的底气，崔志宇的笑容是把日子点亮的开关——她们恰好拼成了一条完整的情绪曲线。</p>
+            <p>这个博客是我的情绪说明书：三种频率、三档音量，一天里的任何时刻都能找到对应的一格。文章都是我本人写的，观点很主观，欢迎同频。</p>
+            <h3>关于「三重频率」</h3>
+            <p>站名来自一个很朴素的念头：喜欢这件事，本质上是调频。把喜欢的人调到同一个频道，世界的声音就变得清晰了。</p>
+            <div class="disclaimer">
+              <b>免责声明</b>
+              <p>本站为非官方粉丝作品，与 aespa、BABYMONSTER、Hearts2Hearts 及任何经纪公司均无关联；艺人与团体名称的相关权利归其所有者。站内插画为原创矢量素材，文章仅代表站长个人观点，全部内容仅供学习与交流，不作商业用途。</p>
+            </div>
+          </div>
+          <aside class="about-side reveal">
+            <div class="stats-grid">
+              <div class="stat-card"><b data-count="9">0</b><span>篇随笔</span></div>
+              <div class="stat-card"><b data-count="3">0</b><span>位成员</span></div>
+              <div class="stat-card"><b>2026.10</b><span>建站时间</span></div>
+              <div class="stat-card"><b>∞</b><span>单曲循环</span></div>
+            </div>
+            <div class="mini-card">
+              <b>技术栈</b>
+              <p>纯静态站点 · HTML / CSS / 原生 JS<br>可直接部署到 GitHub Pages、Netlify 或 Vercel。</p>
+            </div>
+            <div class="mini-card">
+              <b>怎么改内容？</b>
+              <p>文章、成员、歌单都写在 <code>js/data.js</code> 里，替换图片只需覆盖 <code>assets/img/</code> 下的文件。</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-mark"><i></i><i></i><i></i></span>
+        <div><b>三重频率 · TRIPLE FREQUENCY</b><p>宁艺卓 × 郑雅娴 × 崔志宇 · 粉丝个人博客</p></div>
+      </div>
+      <nav class="footer-links" aria-label="页脚导航">
+        <a href="#members">成员</a><a href="#blog">博客</a><a href="#gallery">影像</a><a href="#playlist">歌单</a><a href="#about">关于</a>
+      </nav>
+      <p class="footer-note">本网站为非官方粉丝作品，一切艺人相关内容（姓名、团体名称等）版权归相应经纪公司所有；站内插画为原创矢量素材。© <span id="year">2026</span> TRIPLE FREQUENCY · Made with ♥</p>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <article class="modal-panel">
+      <button class="modal-close" data-close aria-label="关闭">✕</button>
+      <div id="modalBody"></div>
+    </article>
+  </div>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <div class="lightbox-backdrop" data-close></div>
+    <figure class="lightbox-figure">
+      <img id="lightboxImg" src="" alt="">
+      <figcaption id="lightboxCap"></figcaption>
+    </figure>
+    <button class="modal-close lightbox-close" data-close aria-label="关闭">✕</button>
+  </div>
+
+  <button id="toTop" aria-label="回到顶部">↑</button>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
